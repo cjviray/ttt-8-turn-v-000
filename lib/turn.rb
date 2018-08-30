@@ -15,10 +15,10 @@ end
 end
 
 def position_taken?(board, index)
-  if board[index] == " " || board[index] == "" || board[index] == nil
-    return false
-  elsif board[index] == "X" || board[index] == "O"
+  if board[index] == "X" || board[index] == "O" 
     return true
+  else board[index] == " " || board[index] == " " || board[index] == nil
+    return false
   end
 end
   
@@ -35,13 +35,9 @@ def turn(board)
   input = gets.strip
   index = input_to_index(input)
     if valid_move?(board, index) == true
-      move(board, index, value = "X")
+      move(board, index, value = "X") &&
       display_board(board)
     else
-      until valid_move?(board, index) == true
-        puts "Please enter 1-9:"
-        input = gets.strip
-        index = input_to_index(input)
+      turn(board)
       end
     end
-end
